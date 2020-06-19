@@ -5,7 +5,15 @@
   </head>
   
   <body>
-      <p>Mail Type: <%= typeofmail %></p>
+      <p>Mail Type: <%if (typeofmail == "lettersstamped") {%>
+        <%= "Letters (Stamped)" %>
+        <%} else if (typeofmail == "lettersmetered") {%>
+        <%= "Letters (Metered)" %>
+        <%} else if (typeofmail == "largeenvelopes") {%>
+        <%= "Large Envelopes (Flats)" %>
+        <%} else {%>
+        <%= "First Class Package Service - Retail" %>
+        <%}%></p>
       <p>Weight: <%= weight %></p>
       <p>Total Cost: <%= cost %></p>
   </body>

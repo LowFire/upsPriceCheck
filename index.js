@@ -23,14 +23,27 @@ function calculateCost(req, res) {
   console.log(typeofmail);
   console.log(weight);
 
-  if (typeofmail == "lettersstamped")
-    total = weight;
-  else if (typeofmail == "lettersmetered")
-    total = weight * 1.5;
+  if (typeofmail == "lettersstamped") {
+    total = .40 + (weight * .15);
+    if (weight > 3)
+      total = 1;
+  }
+  else if (typeofmail == "lettersmetered") {
+    total = 0.35 +  (weight * .15);
+    if (weight > 3)
+      total = 0.95
+  }
   else if (typeofmail == "largeenvelopes")
-    total = weight * 2;
-  else
-    total = weight * 4;
+    total = 0.80 + (weight * 0.20);
+  else if (typeofmail == "firstclass") {
+    if (weight <= 4)
+      total = 4.20
+    else if (weight > 4 && weight <= 8)
+      total = 5;
+    else if (weight > 8 && weight <= 12)
+      total = 5.75;
+    else total = 6.5;
+  }
 
   console.log(total);
   let params = { cost: total, typeofmail: typeofmail, weight: weight};
