@@ -33,7 +33,7 @@ function calculateCost(req, res) {
     total = weight * 4;
 
   console.log(total);
-  let params = { cost: total };
+  let params = { cost: total, typeofmail: typeofmail, weight: weight};
   res.render("pages/result", params);
 }
 
